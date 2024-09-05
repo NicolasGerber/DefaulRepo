@@ -1,22 +1,25 @@
-#_______________EXERCICIO_4___________________________________
-#Escreva um programa que receba dois números, calcule e apresente o resultado
-#do primeiro número elevado ao segundo.
-n1=int(input("Escreva o numera a ser elevado:"))
-n2=int(input("Escreva a potencia a que {} sera elevado:".format(n1))) #usei o .format para mostrar na box o primeiro numero digitado
+#_______________EXERCICIO_5___________________________________
+#Elabore um programa que calcule a área de um trapézio.
 
-print("O resultado da potencia sera:",(n1**n2))
-#   VERSÃO EM C
+B= float(input("Informe a Base Inferior do trapezio:"))
+b= float(input("Informe a Base Superior do Trapezio:"))
+h= float(input("Informe a Altura do Trapezio:"))
+area = ((B+b)*h)/ 2
+print(f"A area do trapézio é:{area}")
+
+# VERSÃO EM C
 #include <stdio.h>
 #include <math.h>
 #int main()
 #{
-#    int n1, n2, potencia;
-#
-#    printf("Escreva o numero a ser elevado:");
-#    scanf("%d", &n1);
-#    printf("Escreva a potencia a que %d sera elevado:", n1);
-#    scanf("%d", &n2);
-#    potencia = pow(n1, n2);
-#    printf("\nO resultado da potencia sera %d:", potencia);
+#    float B, b, h, area;
+#    printf("Informe a Base Inferior do trapezio:");
+#    scanf("%f", &B);
+#    printf("Informe a Base Superior do Trapezio:");
+#    scanf("%f", &b);
+#    printf("Informe a Altura do Trapezio:");
+#    scanf("%f", &h);
+#    area = ((B + b) * h) / 2;
+#    printf("\nA area do trapezio e: %.2f", area);
 #    return(0);
 #}
