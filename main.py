@@ -1,30 +1,29 @@
+#_______________EXERCICIO_3___________________________________
+#Faça um programa que receba o valor de um depósito e o valor da taxa de juros, calcule e
+#apresente o valor do rendimento e o valor total (valor do depósito + valor do rendimento).
 
-# Solicita ao usuário para digitar as quatro notas
-n1 = float(input("Digite a primeira nota:"))
-n2 = float(input("Digite a segunda nota:"))
-n3 = float(input("Digite a terceira nota:"))
-n4 = float(input("Digite a quarta nota:"))
+depositado = float(input("Digite o valor depositado:"))
+txjuro = float(input("Indique a taxa de juro:"))
+rendimento = depositado * (txjuro/100)
+vtotal = depositado + rendimento
 
-# Caucula a média artimetica delas
-media = (n1+n2+n3+n4)/4
+print(f"O valor do rendimento é: {rendimento:.2f}")
+print(f"O valor total da aplicação sera de:{vtotal:.2f}")
 
-# Exibe o resultado
-print(f"A média é: {media}")
-
-# Codigo em C
+#   VERSÃO EM C
 #include <stdio.h>
 #int main()
 #{
-#float nota1,nota2,nota3,nota4,media;
-#    printf("Escreva a primeira nota:");
-#    scanf("%f",&nota1);
-#    printf("Escreva a segunda nota:");
-#    scanf("%f",&nota2);
-#    printf("Escreva a terceira nota:");
-#    scanf("%f",&nota3);
-#    printf("Escreva a quarta nota:");
-#    scanf("%f",&nota4);
-#    media = (nota1 + nota2 + nota3 + nota4)/4;
-#    printf("A media e: %.2f",media);
+#    float depositado, txjuro, rendimento, vtotal;
+#    printf("Escreva o valor depositado:");
+#    scanf("%f", &depositado);
+#    printf("Indique a taxa de juros:");
+#    scanf("%f", &txjuro);
+#    rendimento = depositado * (txjuro / 100);
+#    vtotal = depositado + rendimento;
+#    printf("O valor de rendimento sera de %.2f:\n", rendimento);
+#    system("pause");
+#    printf("O valor total sera de %.2f:", vtotal);
 #    return (0);
 #}
+
