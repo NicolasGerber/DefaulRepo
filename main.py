@@ -1,29 +1,22 @@
-#_______________EXERCICIO_3___________________________________
-#Faça um programa que receba o valor de um depósito e o valor da taxa de juros, calcule e
-#apresente o valor do rendimento e o valor total (valor do depósito + valor do rendimento).
+#_______________EXERCICIO_4___________________________________
+#Escreva um programa que receba dois números, calcule e apresente o resultado
+#do primeiro número elevado ao segundo.
+n1=int(input("Escreva o numera a ser elevado:"))
+n2=int(input("Escreva a potencia a que {} sera elevado:".format(n1))) #usei o .format para mostrar na box o primeiro numero digitado
 
-depositado = float(input("Digite o valor depositado:"))
-txjuro = float(input("Indique a taxa de juro:"))
-rendimento = depositado * (txjuro/100)
-vtotal = depositado + rendimento
-
-print(f"O valor do rendimento é: {rendimento:.2f}")
-print(f"O valor total da aplicação sera de:{vtotal:.2f}")
-
+print("O resultado da potencia sera:",(n1**n2))
 #   VERSÃO EM C
 #include <stdio.h>
+#include <math.h>
 #int main()
 #{
-#    float depositado, txjuro, rendimento, vtotal;
-#    printf("Escreva o valor depositado:");
-#    scanf("%f", &depositado);
-#    printf("Indique a taxa de juros:");
-#    scanf("%f", &txjuro);
-#    rendimento = depositado * (txjuro / 100);
-#    vtotal = depositado + rendimento;
-#    printf("O valor de rendimento sera de %.2f:\n", rendimento);
-#    system("pause");
-#    printf("O valor total sera de %.2f:", vtotal);
-#    return (0);
+#    int n1, n2, potencia;
+#
+#    printf("Escreva o numero a ser elevado:");
+#    scanf("%d", &n1);
+#    printf("Escreva a potencia a que %d sera elevado:", n1);
+#    scanf("%d", &n2);
+#    potencia = pow(n1, n2);
+#    printf("\nO resultado da potencia sera %d:", potencia);
+#    return(0);
 #}
-
