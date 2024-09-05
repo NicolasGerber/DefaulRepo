@@ -1,26 +1,30 @@
-# Solicita ao usuário para digitar um número
-num = int(input("Digite um número: "))
 
-# Calcula o próximo e o número anterior
-prox = num + 1
-ant = num - 1
+# Solicita ao usuário para digitar as quatro notas
+n1 = float(input("Digite a primeira nota:"))
+n2 = float(input("Digite a segunda nota:"))
+n3 = float(input("Digite a terceira nota:"))
+n4 = float(input("Digite a quarta nota:"))
 
-# Exibe os resultados
-print(f"Você digitou: {num}")
-print(f"O próximo número é: {prox}")
-print(f"O número anterior é: {ant}")
+# Caucula a média artimetica delas
+media = (n1+n2+n3+n4)/4
 
-#Versão C
-# #include <stdio.h>
+# Exibe o resultado
+print(f"A média é: {media}")
+
+# Codigo em C
+#include <stdio.h>
 #int main()
 #{
-#int num, prox, ant;
-#      printf("Digite um numero:");
-#      scanf("%d", &num);
-#      prox = num + 1;
-#      ant = num - 1;
-#     printf("Voce digitou: %d\n",num);
-#     printf("O proximo numero e: %d\n",prox);
-#    printf("O numero anterior e: %d\n", ant);
-#   return (0);
-#     }
+#float nota1,nota2,nota3,nota4,media;
+#    printf("Escreva a primeira nota:");
+#    scanf("%f",&nota1);
+#    printf("Escreva a segunda nota:");
+#    scanf("%f",&nota2);
+#    printf("Escreva a terceira nota:");
+#    scanf("%f",&nota3);
+#    printf("Escreva a quarta nota:");
+#    scanf("%f",&nota4);
+#    media = (nota1 + nota2 + nota3 + nota4)/4;
+#    printf("A media e: %.2f",media);
+#    return (0);
+#}
