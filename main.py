@@ -8,10 +8,10 @@ area = ((B+b)*h)/ 2
 print(f"A area do trapézio é:{area}")
 
 # VERSÃO EM C
-#include <stdio.h>
-#include <math.h>
-#int main()
-#{
+# include <stdio.h>
+# include <math.h>
+# int main()
+# {
 #    float B, b, h, area;
 #    printf("Informe a Base Inferior do trapezio:");
 #    scanf("%f", &B);
@@ -22,4 +22,4 @@ print(f"A area do trapézio é:{area}")
 #    area = ((B + b) * h) / 2;
 #    printf("\nA area do trapezio e: %.2f", area);
 #    return(0);
-#}
+# }
