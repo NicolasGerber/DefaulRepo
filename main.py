@@ -1,25 +1,29 @@
-#_______________EXERCICIO_5___________________________________
-#Elabore um programa que calcule a área de um trapézio.
+#_______________EXERCICIO_6__________________________________
+#Escreva um programa que leia um número positivo inteiro e apresente o quadrado e a raiz quadrada deste número.
+import math #importar a biblioteca math
+num = int(input("Escreva um numero positivo inteiro:"))
+quadrado = (num ** 2)
+raiz = math.sqrt(num)
 
-B= float(input("Informe a Base Inferior do trapezio:"))
-b= float(input("Informe a Base Superior do Trapezio:"))
-h= float(input("Informe a Altura do Trapezio:"))
-area = ((B+b)*h)/ 2
-print(f"A area do trapézio é:{area}")
+print(f"O numero {num} ao quadrado é: {quadrado}")
+print(f"A raiz quadrada de {num} é: {raiz}")
 
-# VERSÃO EM C
+# VERSÃO C
 # include <stdio.h>
 # include <math.h>
-# int main()
+# int
+# main()
 # {
-#    float B, b, h, area;
-#    printf("Informe a Base Inferior do trapezio:");
-#    scanf("%f", &B);
-#    printf("Informe a Base Superior do Trapezio:");
-#    scanf("%f", &b);
-#    printf("Informe a Altura do Trapezio:");
-#    scanf("%f", &h);
-#    area = ((B + b) * h) / 2;
-#    printf("\nA area do trapezio e: %.2f", area);
-#    return(0);
+#     int
+# num, quadrado;
+# float
+# raiz;
+# printf("Escreva um numero inteiro positivo:");
+# scanf("%d", & num);
+# quadrado = pow(num, 2);
+# raiz = sqrt(num);
+# printf("\nO numero %d ao quadrado e: %d", num, quadrado);
+# printf("\nA raiz quadrada de %d e %.2f:", num, raiz);
+#
+# return (0);
 # }
