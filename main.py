@@ -1,47 +1,61 @@
-#_______________EXERCICIO_9_________________________________
-#Escreva um algoritimo que leia 4 notas de um aluno e entregue (Reprovado,Aprovado ou Exame)
-n1 = float(input("Escreva a primeira nota: "))
-n2 = float(input("Escreva a segunda nota: "))
-n3 = float(input("Escreva a terceira nota: "))
-n4 = float(input("Escreva a quarta nota: "))
-total = n1+n2+n3+n4
-media = total/4
-if media >= 7:
-    print(f"Media final: {media:.2f} \nStatus: Aprovado")
-elif media < 4:
-    print(f"Media final: {media:.2f} \nStatus: Reprovado")
+#_______________EXERCICIO_10_________________________________
+#Escreva um algoritimo que receba o nome idade do usuario , assim informando o valor da mensalidade baseado na sua idade
+nome = input("Informe seu nome completo:")
+idade=int(input("Informe sua idade:"))
+if idade > 65:
+    valor = 170
+elif idade >= 46:
+    valor = 130
+elif idade >= 30:
+    valor = 90
+elif idade >= 19:
+    valor = 70
 else:
-    print(f"Media final: {media:.2f} \nStatus: Exame")
-
+    valor = 50
+print(f"Nome: {nome}")
+print(f"Idade: {idade}")
+print(f"Mensalidade: {valor:.2f}")
 
 #Versão em C
 # include <stdio.h>
+# include <stdlib.h>
+# include <locale.h>
+# include <string.h>
 # int
 # main()
 # {
+#     setlocale(LC_ALL, "Portuguese");
+# int
+# idade;
+# char
+# nome[50];
+# float
+# valor;
+# printf("Informe seu nome:");
+# fgets(nome, sizeof(nome), stdin);
+# size_t
+# len = strlen(nome);
+# if (len > 0 & & nome[len - 1] == '\n')
+# {
+#     nome[len - 1] = '\0';
+# }
 #
-#     float n1, n2, n3, n4, media, total;
-# printf("Escreva a primeira nota:");
-# scanf("%f", & n1);
-# printf("Escreva a segunda nota:");
-# scanf("%f", & n2);
-# printf("Escreva a terceira nota:");
-# scanf("%f", & n3);
-# printf("Escreva a quarta nota:");
-# scanf("%f", & n4);
-# total = n1 + n2 + n3 + n4;
-# media = total / 4;
-# if (media >= 7)
+# printf("Informe sua idade:");
+# scanf("%d", & idade);
+# valor = 0;
+# if (idade > 65)
 # {
-#     printf("Media final:%.2f \nStatus:Aprovado", media);
+#     valor = 170;
+# } else if (idade >= 46 & & idade <= 65) {
+# valor = 130;
+# } else if (idade >= 30 & & idade <= 45) {
+# valor = 90;
+# } else if (idade >= 19 & & idade <= 29) {
+# valor = 70;
 # } else {
-# if (media < 4)
-# {
-#     printf("Media final:%.2f \nStatus:Reprovado", media);
-# } else {
-#     printf("Media final:%.2f \nStatus:Exame", media);
+# valor = 50;
 # }
-# }
+# printf("Nome: %s\nIdade: %d\nMensalidade: %.2f\n", nome, idade, valor);
+#
 # return (0);
 # }
-#
