@@ -1,29 +1,14 @@
-#_______________EXERCICIO_6__________________________________
-#Escreva um programa que leia um número positivo inteiro e apresente o quadrado e a raiz quadrada deste número.
-import math #importar a biblioteca math
-num = int(input("Escreva um numero positivo inteiro:"))
-quadrado = (num ** 2)
-raiz = math.sqrt(num)
-
-print(f"O numero {num} ao quadrado é: {quadrado}")
-print(f"A raiz quadrada de {num} é: {raiz}")
-
-# VERSÃO C
-# include <stdio.h>
-# include <math.h>
-# int
-# main()
-# {
-#     int
-# num, quadrado;
-# float
-# raiz;
-# printf("Escreva um numero inteiro positivo:");
-# scanf("%d", & num);
-# quadrado = pow(num, 2);
-# raiz = sqrt(num);
-# printf("\nO numero %d ao quadrado e: %d", num, quadrado);
-# printf("\nA raiz quadrada de %d e %.2f:", num, raiz);
-#
-# return (0);
-# }
+#_______________EXERCICIO_8__________________________________
+#Escreva um programa que peça dois numeros ao usuario, informe o maior e menor, e informe caso sejam iguais
+n1 = int(input("Escreva o primeiro numero:"))
+n2 = int(input("Escreva o segundo numero:"))
+if n1 != n2:
+    if n1 > n2:
+        maior = n1
+        menor = n2
+    else:
+        maior = n2
+        menor = n1
+    print(f"O maior numero é {maior} e o menor numero é {menor}")
+else:
+    print(f"Os numeros são iguais")
