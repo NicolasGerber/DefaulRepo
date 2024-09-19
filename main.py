@@ -1,53 +1,55 @@
-#_______________EXERCICIO_16_________________________________
-#Apresente a média de salário da população, a média de filhos e o maior salário.
-qtd = 0
-t_filhos = 0
-t_salario = 0
-maior = 0
-salario = float(input("Informe o salario ou digite (-1) para finalizar:"))
-while (salario != -1):
-    if(salario > maior):
-        maior = salario
-    filhos = float(input("Informe o numero de filhos:"))
+#_______________EXERCICIO_17_________________________________
+#calcule e apresente a média de altura e idade das pessoas. A entrada de dados é encerrada quando for digitado o valor zero para a idade.
+t_idade = 0
+t_alt = 0
+m_idade = 0
+m_alt = 0
+qtd=0
+idade = int(input("Digite a idade ou (0) para finalizar:"))
+while (idade != 0):
+    alt=float(input("Digite sua altura"))
     qtd = qtd + 1
-    t_filhos = t_filhos + filhos
-    t_salario = t_salario + salario
-    salario = float(input("Informe o salario ou digite (-1) para finalizar:"))
-print(f"A média de salários é: {t_salario/qtd:.3f}");
-print(f"A média de filhos é: {t_filhos/qtd:.2f}");
-print(f"O maior salário é: {maior:.2f}");
+    t_alt = t_alt + alt
+    t_idade = t_idade + idade
+    idade = int(input("Digite a idade ou (0) para finalizar:"))
+m_idade = t_idade/qtd
+m_alt = t_alt/qtd
+print(f"A media de idade é: {m_idade:.2f}")
+print(f"A media de altura é: {m_alt:.2f}")
 
 
 # Versão em C
-#include <stdio.h>
-#include <stdlib.h>
-#include <locale.h>
-#include <string.h>
- # int main(){
-	# setlocale(LC_ALL, "Portuguese");
-	# int filhos,qtd;
-	# float salario,t_salario,t_filhos,maior;
-	# qtd = 0;
-	# t_filhos = 0 ;
-	# t_salario = 0;
-	# maior= 0;
-	# printf("Informe o salario ou digite (-1) para finalizar:\n");
-	# scanf("%f",&salario);
-	# while (salario != -1)
-	# {
-	# 	if (salario > maior){
-	# 		maior  = salario;
-	# 	}
-	# 		printf("Informe o numero de filhos:\n");
-	# 		scanf("%d",&filhos);
-	# 		qtd++;
-	# 		t_filhos= t_filhos + filhos;
-	# 		t_salario = t_salario + salario;
-	# 		printf("Informe o salario ou digite (-1) para finalizar:\n");
-	# 		scanf("%f",&salario);
-	# 	}
-	# printf("A média de salários é: %.3f\n",t_salario/qtd);
-	# printf("A média de filhos é: %.2f\n",t_filhos/qtd);
-	# printf("O maior salário é: %.3f\n",maior);
-	# return(0);
-	# }
+# include <stdio.h>
+# include <stdlib.h>
+# include <locale.h>
+# include <string.h>
+# int
+# main()
+# {
+#     setlocale(LC_ALL, "Portuguese");
+# int
+# idade, qtd;
+# float
+# alt, m_idade, m_alt, t_alt, t_idade;
+# t_idade = 0;
+# t_alt = 0;
+# m_idade = 0;
+# m_alt = 0;
+# qtd = 0;
+# printf("Digite a idade ou (0) para finalizar:\n");
+# scanf("%d", & idade);
+# while (idade != 0){
+# printf("Digite sua altura:");
+# scanf("%f", & alt);
+# qtd++;
+# t_alt = t_alt + alt;
+# t_idade = t_idade + idade;
+# printf("Digite a idade ou (0) para finalizar:\n");
+# scanf("%d", & idade);
+# }
+# m_idade = t_idade / qtd;
+# m_alt = t_alt / qtd;
+# printf("A media de idade é: %.2f \n", m_idade);
+# printf("A media de altura é: %.2f \n", m_alt);
+# return (0);
+# }
