@@ -1,67 +1,72 @@
 #_______________EXERCICIO_18________________________________
-#Faça um programa que leia idade e opinião e apresente:
-#O número de clientes que responderam satisfatório, a média de idade dos clientes que opinaram como satisfatório.
-#E o número de clientes que responderam insatisfatório.
-# O programa se encerra quando for digitado o valor zero para idade.
-qtd=0
-t_idade = 0
-m_idade = 0
-cont = 0
-sat = 0
-insat = 0
+#Faça um programa que leia números inteiros até que seja informado o valor 0.
+# Apresente a média dos valores, o maior e o menor valor e a quantidade de números
+# pares e ímpares
 
-idade = int(input("Digite a idade do cliente ou (0) para finalizar:"))
-while (idade != 0):
-    print(f"Como foi sua experiencia com o produto?\n")
-    opn = int(input("1 – satisfatório \n2 – indiferente \n3 – insatisfatório\n"))
+soma = 0
+qtd = 0
+impar = 0
+par = 0
+num=int(input("Escreva um numero ou digite (0) para finalizar:"))
+maior = num
+menor = num
+while (num != 0):
+    if (num > maior):
+        maior = num
+    elif (num < menor):
+        menor = num
     qtd = qtd + 1
-    t_idade = t_idade + idade
-    if (opn == 1):
-        sat = sat +1
-    elif (opn == 3):
-        insat = insat + 1
-    idade = int(input("Digite a idade do cliente ou (0) para finalizar:"))
-m_idade = t_idade/qtd
-print(f"A Quantidade de cliente que responderam como satisfatorio foi: {sat}")
-print(f"A media de idade deles é: {m_idade:.2f}")
-print(f"A Quantidade de cliente que responderam como insatisfatorio foi: {insat}")
+    soma = soma + num
+    if (num % 2 == 0):
+        par = par + 1
+    else:
+        impar = impar + 1
 
+    num = int(input("Escreva um numero ou digite (0) para finalizar:"))
+print(f"A media dos valores apresentados é :{soma/qtd:.2f}")
+print(f"O maior numero apresentado foi : {maior}")
+print(f"O menor numero apresentado foi: {menor}")
+print(f"A quantidade de numeros pares é: {par}")
+print(f"A quantidade de numeros impares é: {impar}")
 
-
-# Versão em C
+#Versão em C
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
 #  int main(){
 # 	setlocale(LC_ALL, "Portuguese");
-# 	int qtd,idade,opn,cont,t_idade,insat,sat;
-# 	float m_idade;
-# 	qtd=0;
-# 	t_idade = 0;
-# 	m_idade = 0;
-# 	cont = 0;
-# 	sat = 0;
-# 	insat = 0;
-# 	printf("Digite a idade do cliente ou (0) para finalizar:\n");
-# 	scanf("%d",&idade);
-# 	while (idade !=0){
-# 		printf("Como foi sua experiencia com o produto?\n");
-# 		printf("1 – satisfatório \n2 – indiferente \n3 – insatisfatório\n");
-# 		scanf("%d",&opn);
-# 		qtd++;
-# 		t_idade = t_idade + idade;
-# 		if (opn == 1){
-# 			sat++;
-# 		} else if (opn == 3){
-# 			insat++;
+# 	int num,maior,menor,impar,par,soma,qtd,i;
+# 	float media;
+# 	printf("Informe um numero ou (0) para finalizar:\n");
+# 	scanf("%d",&num);
+# 	maior = num;
+# 	menor = num;
+# 	soma = 0;
+# 	qtd = 0;
+# 	impar = 0;
+# 	par = 0;
+# 	while (num != 0) {
+# 		if (num > maior) {
+# 			maior = num;
+# 		} else if (num < menor){
+# 			menor = num;
 # 		}
-# 		printf("Digite a idade do cliente ou (0) para finalizar:\n");
-# 		scanf("%d",&idade);
+# 		qtd ++;
+# 		soma = soma + num;
+# 		if (num % 2 == 0) {
+# 			par++;
+# 		} else {
+# 			impar++;
+# 		}
+# 		printf("Informe um numero ou (0) para finalizar:\n");
+# 		scanf("%d",&num);
 # 	}
-# 	m_idade = t_idade/qtd;
-# 	printf("A Quantidade de cliente que responderam como satisfatorio foi: %d\n",sat);
-# 	printf("A media de idade deles é: %.2f\n",m_idade);
-# 	printf("A Quantidade de cliente que responderam como insatisfatorio foi: %d\n",insat);
+# 	media = soma/qtd;
+# 	printf("A media dos valores apresentados é: %.2f\n", media);
+# 	printf("O maior numero apresentado foi: %d\n", maior);
+# 	printf("O menor numero apresentado foi: %d\n", menor);
+# 	printf("A quantidade de numeros pares é: %d\n", par);
+# 	printf("A quantidade de numeros impares é: %d", impar);
 # 	return(0);
 # }
