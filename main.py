@@ -1,34 +1,26 @@
-#_______________EXERCICIO_20________________________________
-#Imagine que você esteja ensinando a tabuada para uma criança e precisa mostrar
-# a ela todas as possíveis multiplicações entre os números que vão de um até dez.
-# Assim, elabore um programa que imprima a tabuada do um ao dez.
-for i in range(1,10,1):
-    print(f"Tabuada do {i}")
-    for j in range (1,10,1):
-        valor = i*j
-        print(f"{i} x {j} = {valor}")
+#_______________EXERCICIO_21________________________________
+#faça um programa que apresenta a soma de todos os números inteiros ímpares entre 200 e 500.
 
-#Versão C
-# include <stdio.h>
-# include <stdlib.h>
-# include <locale.h>
-# include <string.h>
-# int
-# main()
-# {
-#     setlocale(LC_ALL, "Portuguese");
-# int
-# valor, j, i;
-# for (i=1;i <= 10;i++)
-# {
-#     printf("tabuada do %d\n", i);
-# system("pause");
-# for (j=1;j <= 10;j++)
-# {
-#     valor = i * j;
-# printf("%d x %d = %d\n", i, j, valor);
-# }
-#
-# }
-# return (0);
+soma = 0
+for i in range (200,500,1):
+    if (i % 2 != 0) :
+        soma = soma + i
+print(f"A soma dos impares de 200 ate 500 é: {soma}")
+
+# Versão em C
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+#  int main(){
+# 	setlocale(LC_ALL, "Portuguese");
+# 	int i,soma;
+# 	soma = 0;
+# 	for (i=200;i<=500;i++){
+# 		if (i % 2 != 0){
+# 			soma = soma + i;
+# 		}
+# 	}
+# 	printf("A soma dos impares de 200 até 500 é: %d",soma);
+# 	return(0);
 # }
