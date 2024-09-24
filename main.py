@@ -1,26 +1,37 @@
-#_______________EXERCICIO_21________________________________
-#faça um programa que apresenta a soma de todos os números inteiros ímpares entre 200 e 500.
+#_______________EXERCICIO_22________________________________
+#Construa um programa que apresente todos os números divisíveis por três e por sete que sejam menores que 30.
 
-soma = 0
-for i in range (200,500,1):
-    if (i % 2 != 0) :
-        soma = soma + i
-print(f"A soma dos impares de 200 ate 500 é: {soma}")
+#NOTA
+# No gabarito oficial da questão era visto que seriam entregues todos os numeros divisiveis por 3 e 7 menores que 30
+# mas na minha interpretação da questão seriam somente os numeros que seria divisiveis por 3 E 7.
 
-# Versão em C
+for i in range(1,30,1):
+    if (i % 3 == 0):
+        print(f"O numero {i} é divisivel por 3")
+    elif (i % 7 == 0):
+        print(f"O numero {i} é divisivel por 7")
+
+# Na minha interpretação deveria ser realizado uma verificação conjunta pela clausula AND
+for i in range(1,30,1):
+    if (i % 3 == 0 and i % 7 == 0):
+        print(f"O numero {i} é divisivel por 3 e 7")
+
+
+#Versão em C
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
 #  int main(){
 # 	setlocale(LC_ALL, "Portuguese");
-# 	int i,soma;
-# 	soma = 0;
-# 	for (i=200;i<=500;i++){
-# 		if (i % 2 != 0){
-# 			soma = soma + i;
+# 	int i;
+# 	for (i=1;i<=30;i++){
+# 		if (i % 3 == 0){
+# 			printf("O numero %d é divisel por 3\n",i);
+# 		}
+# 		if (i % 7 == 0){
+# 			printf("O numero %d é divisel por 7\n",i);
 # 		}
 # 	}
-# 	printf("A soma dos impares de 200 até 500 é: %d",soma);
 # 	return(0);
 # }
