@@ -1,20 +1,10 @@
-#_______________EXERCICIO_22________________________________
-#Construa um programa que apresente todos os números divisíveis por três e por sete que sejam menores que 30.
+#_______________EXERCICIO_23________________________________
+#Elabore um programa que leia uma frase e o número de vezes que deseja imprimi-la.
+frase = (input("Escreva uma frase:"))
+qtd = int(input("Quantas vezes essa frase deve ser repetida:"))
 
-#NOTA
-# No gabarito oficial da questão era visto que seriam entregues todos os numeros divisiveis por 3 e 7 menores que 30
-# mas na minha interpretação da questão seriam somente os numeros que seria divisiveis por 3 E 7.
-
-for i in range(1,30,1):
-    if (i % 3 == 0):
-        print(f"O numero {i} é divisivel por 3")
-    elif (i % 7 == 0):
-        print(f"O numero {i} é divisivel por 7")
-
-# Na minha interpretação deveria ser realizado uma verificação conjunta pela clausula AND
-for i in range(1,30,1):
-    if (i % 3 == 0 and i % 7 == 0):
-        print(f"O numero {i} é divisivel por 3 e 7")
+for i in range (qtd):
+    print(frase)
 
 
 #Versão em C
@@ -24,14 +14,14 @@ for i in range(1,30,1):
 #include <string.h>
 #  int main(){
 # 	setlocale(LC_ALL, "Portuguese");
-# 	int i;
-# 	for (i=1;i<=30;i++){
-# 		if (i % 3 == 0){
-# 			printf("O numero %d é divisel por 3\n",i);
-# 		}
-# 		if (i % 7 == 0){
-# 			printf("O numero %d é divisel por 7\n",i);
-# 		}
+# 	int i,qtd;
+# 	char frase[100];
+# 	printf ("Escreva Uma frase:");
+# 	gets(frase);
+# 	printf("Qunatas vezes essa frase deve ser repetida:");
+# 	scanf("%d",&qtd);
+# 	for (i=1;i<=qtd;i++){
+# 		printf("%s\n",frase);
 # 	}
 # 	return(0);
 # }
