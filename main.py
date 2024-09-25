@@ -1,49 +1,45 @@
 #_______________EXERCICIO_26________________________________
-# Construa um programa que possibilite calcular a área total de uma residência (sala,
-# cozinha, banheiro, quartos etc.). O programa deve solicitar a entrada do nome, a
-# largura e o comprimento de determinado cômodo até que o nome do cômodo seja
-# “FIM”. O programa deve apresentar o valor total acumulado da área residencial.
-area = 0
-total = 0
-nome = (input("Escreva o nome do comodo ou (FIM) para finalizar:"))
-while (nome.lower() != "fim"):
-    largura = float(input("Escreva a largura do comodo:"))
-    comprimento = float(input("Escreva o comprimento do comodo:"))
-    area = largura * comprimento
-    total += area
-    nome = (input("Escreva o nome do comodo ou (FIM) para finalizar:"))
-print(f"A area total da case é: {total:.2f}")
+#Elaborer um vetor que armazene os numeros e os ordene.
+vetorA = []
+for i in range(10):
+    elemento =int(input(f"Digite o {i+1}ª elemento do vetor:"))
+    vetorA.append(elemento)
 
-# Versão em C
-# include <stdio.h>
-# include <stdlib.h>
-# include <locale.h>
-# include <string.h>
-# int
-# main()
-# {
-#     setlocale(LC_ALL, "Portuguese");
-# float
-# largura, comprimento, area, total;
-# char
-# nome[50];
-# printf("Escreva o nome do comodo ou digite (FIM) para finalizar:");
-# fgets(nome, sizeof(nome), stdin);
-# nome[strcspn(nome, "\n")] = 0;
-# area = 0;
-# total = 0;
-# while (strcmp(nome, "fim") != 0 & & strcmp(nome, "FIM") != 0) {
-# printf("\nDigite a largura do comodo:");
-# scanf("%f", & largura);
-# printf("\nDigite o comprimento do comodo:");
-# scanf("%f", & comprimento);
-# area = largura * comprimento;
-# total = total + area;
-# printf("\nEscreva o nome do comodo ou digite (FIM) para finalizar:");
-# getchar();
-# fgets(nome, sizeof(nome), stdin);
-# nome[strcspn(nome, "\n")] = 0;;
-# }
-# printf("\nA area total da casa é: %.2f", total);
-# return (0);
+    for i in range (len(vetorA) - 1):
+        for j in range(i+1, len(vetorA)):
+            if vetorA[i] > vetorA[j]:
+                vetorA[i], vetorA[j] = vetorA[j], vetorA[i]
+    print("\nVETOR ORDENADO:")
+    for elemento in vetorA:
+            print(f"{elemento} - ", end="")
+    print()
+
+    # Versão em C
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <string.h>
+#  int main(){
+# 	setlocale(LC_ALL, "Portuguese");
+# 	int vetorA[10];
+# 	int i,j,troca;
+# 	for (i=0;i<10;i++){
+# 		printf("Digite o %d elemento do vetor:\n",i);
+# 		scanf("%d",&vetorA[i]);
+# 		}
+# 	for (i=0;i<9;i++){
+# 		for (j=i+1;j<10;j++){
+# 			if(vetorA[i] > vetorA[j]){
+# 				troca = vetorA[i];
+# 				vetorA[i] = vetorA[j];
+# 				vetorA[j] = troca;
+# 			}
+# 		}
+# 	}
+# 	printf("\n VETOR ORDENADO:\n");
+# 	for (i=0;i<10;i++)
+# 	{
+# 		printf("%d - ", vetorA[i]);
+# 	}
+# 	return(0);
 # }
