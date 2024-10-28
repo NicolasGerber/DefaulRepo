@@ -1,28 +1,49 @@
 import random
-
-letrasmai = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-letrasmin = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-simbolos = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
-numeros = ['1','2','3','4','5','6','7','8','9','0']
-v_senha = []
-
-print("GERADOR AUTOMATICO DE SENHA")
-n_letrasmin = int(input("Quantas letras minusculas deve conter em sua senha?\nResposta:"))
-n_letrasmai = int(input("Quantas letras maiusculas deve conter em sua senha?\nResposta:"))
-n_simbolos = int(input("Quantos simbolos deve conter em sua senha?:\nResposta:"))
-n_numeros =  int(input("Quantos simbolos deve conter em sua senha?:\nResposta:"))
+from LISTA import word_list
+palavra_escolhida = random.choice(word_list)
 
 
-for i in range(0,n_letrasmin):
-    v_senha.append(random.choice(letrasmin))
-for i in range(0, n_letrasmai):
-     v_senha.append(random.choice(letrasmai))
-for i in range(0,n_simbolos):
-    v_senha.append(random.choice(simbolos))
-for i in range(0,n_numeros):
-    v_senha.append(random.choice(numeros))
-random.shuffle(v_senha)
-senha=""
-for i in v_senha:
-    senha+=i
-print(f"SUA SENHA É: {senha}")
+tamanho = len(palavra_escolhida)
+placeholder = ""
+for posição in range(tamanho):
+    placeholder += "_"
+print(placeholder)
+
+tentativas = 6
+game_over = False
+letras_certas= []
+
+print("FORCA")
+while not game_over:
+
+    chute = input("Adivinhe uma letra: ").lower()
+
+    display = ""
+    if chute in letras_certas:
+        print("VOCÊ JA ACERTOU ESSA LETRA!")
+
+    for letra in palavra_escolhida:
+        if letra == chute:
+            display += letra
+            letras_certas.append(chute)
+
+        elif letra in letras_certas:
+            display += letra
+        else:
+            display += "_"
+
+    print(display)
+    if chute not in palavra_escolhida:
+        tentativas -= 1
+        print(f"LETRA ERRADA! \nVIDAS RESTANTES: {tentativas}\n")
+
+        if tentativas == 0:
+            game_over = True
+            print("**********VOCÊ**PERDEU*********")
+            print(f"A palavra era: {palavra_escolhida.upper()}")
+
+    if "_" not in display:
+        print("**********VOCÊ**GANHOU!**********")
+        game_over = True
+
+
