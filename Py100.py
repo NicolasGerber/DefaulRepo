@@ -1,49 +1,29 @@
-import random
-from LISTA import word_list
-palavra_escolhida = random.choice(word_list)
+from LISTA import alphabet
+def caesar(msg,shift_number,d):
+    if d == 'encode':
+        cipher_text = ""
 
+        for letter in msg:
+            shifted_position = alphabet.index(letter) + shift_number
+            shifted_position %= len(alphabet)
+            cipher_text += alphabet[shifted_position]
+        print(f"The encode result is {cipher_text}")
+    else:
+        cipher_text = ""
 
-tamanho = len(palavra_escolhida)
-placeholder = ""
-for posição in range(tamanho):
-    placeholder += "_"
-print(placeholder)
+        for letter in msg:
+            shifted_position = alphabet.index(letter) - shift_number
+            shifted_position %= len(alphabet)
+            cipher_text += alphabet[shifted_position]
+        print(f"The decode result is {cipher_text}")
 
-tentativas = 6
-game_over = False
-letras_certas= []
-
-print("FORCA")
-while not game_over:
-
-    chute = input("Adivinhe uma letra: ").lower()
-
-    display = ""
-    if chute in letras_certas:
-        print("VOCÊ JA ACERTOU ESSA LETRA!")
-
-    for letra in palavra_escolhida:
-        if letra == chute:
-            display += letra
-            letras_certas.append(chute)
-
-        elif letra in letras_certas:
-            display += letra
-        else:
-            display += "_"
-
-    print(display)
-    if chute not in palavra_escolhida:
-        tentativas -= 1
-        print(f"LETRA ERRADA! \nVIDAS RESTANTES: {tentativas}\n")
-
-        if tentativas == 0:
-            game_over = True
-            print("**********VOCÊ**PERDEU*********")
-            print(f"A palavra era: {palavra_escolhida.upper()}")
-
-    if "_" not in display:
-        print("**********VOCÊ**GANHOU!**********")
-        game_over = True
-
-
+fim = False
+while fim == False:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt\n").lower()
+    text = input("Type your message: \n").lower()
+    shift = int(input("Type the shift number: \n"))
+    caesar(text,shift,direction)
+    choose = input("Do you wanna go again, type 'yes or 'no': \n")
+    if choose == 'no':
+        fim = True
+        print("Goodbye!")
