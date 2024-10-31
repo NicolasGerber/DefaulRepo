@@ -1,29 +1,22 @@
-from LISTA import alphabet
-def caesar(msg,shift_number,d):
-    if d == 'encode':
-        cipher_text = ""
+user = {}
+def max_bid(bid_list):
+    winner = ''
+    maxbid = 0
+    for n in bid_list:
+        bid_amount = bid_list[n]
+        if bid_amount > maxbid:
+            maxbid = bid_amount
+            winner = n
+    print(f"The winner is {winner}, with the bid amount of ${maxbid}")
 
-        for letter in msg:
-            shifted_position = alphabet.index(letter) + shift_number
-            shifted_position %= len(alphabet)
-            cipher_text += alphabet[shifted_position]
-        print(f"The encode result is {cipher_text}")
-    else:
-        cipher_text = ""
 
-        for letter in msg:
-            shifted_position = alphabet.index(letter) - shift_number
-            shifted_position %= len(alphabet)
-            cipher_text += alphabet[shifted_position]
-        print(f"The decode result is {cipher_text}")
-
-fim = False
-while fim == False:
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt\n").lower()
-    text = input("Type your message: \n").lower()
-    shift = int(input("Type the shift number: \n"))
-    caesar(text,shift,direction)
-    choose = input("Do you wanna go again, type 'yes or 'no': \n")
-    if choose == 'no':
-        fim = True
-        print("Goodbye!")
+terminate = False
+while terminate == False:
+    name = input("What's your name?: ")
+    bid = int(input("What's your bid?: $"))
+    user[name] = bid
+    end = input("Are there any other person would like to Bid? (y/n): ").lower()
+    print("\n" * 10)
+    if end == 'n':
+        terminate = True
+max_bid(user)
