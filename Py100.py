@@ -1,22 +1,32 @@
-user = {}
-def max_bid(bid_list):
-    winner = ''
-    maxbid = 0
-    for n in bid_list:
-        bid_amount = bid_list[n]
-        if bid_amount > maxbid:
-            maxbid = bid_amount
-            winner = n
-    print(f"The winner is {winner}, with the bid amount of ${maxbid}")
 
+def add(n1,n2):
+    return n1 + n2
+def sub(n1,n2):
+    return n1 - n2
+def mult(n1,n2):
+    return n1 * n2
+def div(n1,n2):
+    return n1 / n2
+operations = {"+": add,
+              "-": sub,
+              "*": mult,
+              "/": div,
+              }
+def calculator(): #Using this function as recursion
+    print("CALCULATOR")
+    should_accumulate = True
+    num1 = float(input("Type he first number: "))
+    while should_accumulate:
+        operation = input("Type the operation you want to realize (+,-,*,/): ")
+        num2 = float(input("Now type the second number:"))
+        result = operations[operation](num1,num2)
+        print(f"{num1} {operation} {num2} = {result}")
+        choice = input(f"Type 'y' to continue calculating with {result} or type 'n' to start a new calculation: ")
 
-terminate = False
-while terminate == False:
-    name = input("What's your name?: ")
-    bid = int(input("What's your bid?: $"))
-    user[name] = bid
-    end = input("Are there any other person would like to Bid? (y/n): ").lower()
-    print("\n" * 10)
-    if end == 'n':
-        terminate = True
-max_bid(user)
+        if choice == 'y':
+            num1 = result
+        else:
+            should_accumulate = False
+            print("\n" *20)
+            calculator()
+calculator()
