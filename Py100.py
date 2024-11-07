@@ -1,97 +1,34 @@
-import  random
+import random
+from LISTA import jogadores
 
-def deal_card():
-    """Deal a random card from the "cards" list"""
-    cards = {"A": 11, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "J": 10, "Q": 10,
-             "K": 10}
-    card_symbol = random.choice(list(cards.keys()))
-    card_value = cards[card_symbol]
-    return card_symbol, card_value
+def pick():
+    jogador = random.choice(jogadores)
+    goals = jogador['gols']
+    return f"{jogador['nome']}, conhecido por sua atuação no {jogador['time']}", goals
 
-def calculate_score(card_values):
-    """Does the sum of the score of the cards and verifies if the ACE score pass 21, then turning into an 1"""
-    score = sum(card_values)
-    if score == 21 and len(card_values) == 2:
-        return 0
-        #the zero value indicates BLACKJACK
-    if 11 in card_values and score > 21:
-        card_values.remove(11)
-        card_values.append(1)
+def game():
+    score = 0
+    errou = False
 
-    return sum(card_values)
+    while not errou:
+        print("Bem-vindo ao HIGHER/LOWER!:\nVocê terá de adivinhar se um jogador tem mais ou menos gols que outro na carreira!\n")
 
-def compare(p_score, d_score):
-    if p_score == d_score:
-        return "DRAW!"
-    elif d_score == 0:
-        return "Dealer has Blackjack. YOU LOSE!!"
-    elif p_score == 0:
-        return "BLACKJACK!! YOU WIN!!"
-    elif p_score > 21:
-        return "You pass over 21. YOU LOSE!!"
-    elif d_score > 21:
-        return "The dealer went over 21. YOU WIN!!"
-    elif p_score > d_score:
-        return "YOU WIN!!"
-    else:
-        return "YOU LOSE!!"
+        jogador_a, gols_a = pick()
+        jogador_b, gols_b = pick()
 
-def play_game():
-    player_hand = []
-    dealer_hand = []
-    player_hand_values = []
-    dealer_hand_values = []
-    dealer_score = -1
-    player_score = -1
+        print(f"Jogador A: {jogador_a} com {gols_a} gols.")
+        print(f"Jogador B: {jogador_b} com {gols_b} gols.")
 
-    for _ in range(2):
-        card_symbol, card_value = deal_card()
-        player_hand.append(card_symbol)
-        player_hand_values.append(card_value)
+        escolha = input("Quem tem mais gols? A ou B: ").strip().upper()
 
-        card_symbol, card_value = deal_card()
-        dealer_hand.append(card_symbol)
-        dealer_hand_values.append(card_value)
-
-    is_game_over = False
-    while not is_game_over:
-        player_score = calculate_score(player_hand_values)
-        dealer_score = calculate_score(dealer_hand_values)
-        print("Player's hand:", player_hand, "Player's score:", "21" if player_score == 0 else player_score)
-        print("Dealer's first card:", dealer_hand[0])
-        if player_score > 21:
-            is_game_over = True
-            print("You went over 21. YOU LOSE!!")
-            break
-
-        if player_score == 0 or dealer_score == 0 or player_score > 21:
-            is_game_over = True
+        if (escolha == 'A' and gols_a > gols_b) or (escolha == 'B' and gols_b > gols_a):
+            print("Você acertou!")
+            score += 1
+            print("\n"*10)
+            print(f"Score atual: {score}\n")
         else:
-            hit = input("Type 'y' get other card, type 'n' to pass: ")
-            if hit == 'y':
-                card_symbol, card_value = deal_card()
-                player_hand.append(card_symbol)
-                player_hand_values.append(card_value)
-            else:
-                is_game_over = True
+            print("Você errou!")
+            print(f"Score final: {score}")
+            errou = True
 
-    if not is_game_over and player_score <= 21:
-        while dealer_score !=0 and dealer_score < player_score:
-            card_symbol, card_value = deal_card()
-            dealer_hand.append(card_symbol)
-            dealer_hand_values.append(card_value)
-            dealer_score = calculate_score(dealer_hand_values)
-            print("Dealer's hand:", dealer_hand, "Dealer's score:", "21" if dealer_score == 0 else dealer_score)
-
-            input("Show dealer's next card...")
-
-
-    print(f"Your final hand: {player_hand}, Final score: {'BLACKJACK' if player_score == 0 else player_score}")
-    print(f"Dealer's final hand: {dealer_hand}, Final score: {'BLACKJACK' if dealer_score == 0 else dealer_score}")
-    print(compare(player_score, dealer_score))
-
-while input("Wanna Play BlackJack?(y/n): ").lower() == 'y':
-    play_game()
-    input("Press Enter to continue...")
-    print("\n" * 20)
-
+game()
