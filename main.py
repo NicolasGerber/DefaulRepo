@@ -1,57 +1,57 @@
 from turtle import Screen
+from paddle import Paddle
+from ball import Ball
+from scoreboard import Scoreboard
 import time
-from snake import Snake
-from LISTA import Food,Scoreboard
 import pygame
 pygame.init()
 
-def kasino():
-    pygame.mixer.music.load('kasino.mp3')
-    pygame.mixer.music.play()
-    pygame.event.wait()
 
-screen = Screen()
-screen.setup(600,600)
+POS1=350,0
+POS2=-350,0
+
+
+screen= Screen()
+screen.setup(800,600)
 screen.bgcolor("black")
-screen.title("SNAKE GAME")
+screen.title("PONG")
 screen.tracer(0)
 
-
-snake = Snake()
-food = Food()
 scoreboard = Scoreboard()
-
+ball = Ball()
+r_paddle = Paddle(POS1)
+l_paddle = Paddle(POS2)
 
 screen.listen()
-screen.onkey(snake.up,"Up")
-screen.onkey(snake.down,"Down")
-screen.onkey(snake.left,"Left")
-screen.onkey(snake.right,"Right")
+
+screen.onkey(r_paddle.up,"Up")
+screen.onkey(r_paddle.down,"Down")
+screen.onkey(l_paddle.up,"w")
+screen.onkey(l_paddle.down,"s")
+
 game_is_on = True
 while game_is_on:
+    time.sleep(0.05)
     screen.update()
-    time.sleep(0.07)
-    snake.move()
+    ball.move()
 
-    #Food Collision
-    if snake.head.distance(food) < 15:
-        kasino()
-        food.refresh()
-        snake.extend()
-        scoreboard.increase_score()
+    if ball.ycor() > 282 or ball.ycor() < -282:
+        ball.bounce()
+        pygame.mixer.Sound.play(pygame.mixer.Sound('pong.mp3'))
+    if ball.distance(r_paddle) < 45 and ball.xcor() > 330:
+        ball.defend()
+        pygame.mixer.Sound.play(pygame.mixer.Sound('pong.mp3'))
+    if ball.distance(l_paddle) < 45 and ball.xcor() > -330:
+        ball.defend()
+        pygame.mixer.Sound.play(pygame.mixer.Sound('pong.mp3'))
 
-    #Wall Collision
-    if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
-        game_is_on = False
-        scoreboard.endgame()
+    if ball.xcor() > 420:
+        scoreboard.score_l()
+        time.sleep(ball.move_speed)
+        ball.reset()
 
-    #Tail Collision
-    for segments in snake.all_snakes:
-        if segments == snake.head:
-            pass
-        elif snake.head.distance(segments) < 10:
-            game_is_on = False
-            scoreboard.endgame()
-
-
-screen.exitonclick()
+    if ball.xcor() < -420:
+        scoreboard.score_r()
+        time.sleep(0.8)
+        ball.reset()
+screen.mainloop()
