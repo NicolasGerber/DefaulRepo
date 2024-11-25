@@ -1,25 +1,54 @@
 from turtle import Turtle
+import random
+#CONSTANTES
+ALIGNMENT="center"
+FONT=("times new roman",15,"normal")
+class Food(Turtle):
+    def __init__(self):
+        super().__init__()
+        self.shape("circle")
+        self.penup()
+        self.shapesize(stretch_len=0.5,stretch_wid=0.5)
+        self.color("blue")
+        self.speed("fastest")
+        self.refresh()
+
+    def refresh(self):
+        rand_x = random.randint(-280, 280)
+        rand_y = random.randint(-280, 280)
+        self.goto(rand_x, rand_y)
+
+
 
 class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.color("white")
-        self.penup()
+        with open("highscores.txt", mode="r") as file:
+            self.highscore = int(file.read())
         self.hideturtle()
-        self.l_score = 0
-        self.r_score = 0
-        self.update()
+        self.score =0
+        self.penup()
+        self.goto(0, 270)
+        self.write(f"Score:{self.score} High Score: {self.highscore}",False,ALIGNMENT,FONT)
 
-    def update(self):
+
+
+    def increase_score(self):
         self.clear()
-        self.goto(-150, 190)
-        self.write(self.l_score, align="center", font=("Times New Roman", 80, "normal"))
-        self.goto(150, 190)
-        self.write(self.r_score, align="center", font=("Times New Roman", 80, "normal"))
+        self.score += 1
+        self.write(f"Score:{self.score} High Score: {self.highscore}",False,ALIGNMENT,FONT)
 
-    def score_r(self):
-        self.r_score += 1
-        self.update()
-    def score_l(self):
-        self.l_score += 1
-        self.update()
+    def update_scoreboard(self):
+        self.clear()
+        self.goto(0, 270)
+        self.write(f"Score:{self.score} High Score: {self.highscore}",False,ALIGNMENT,FONT)
+
+
+    def endgame(self):
+        if self.score > self.highscore:
+            self.highscore = self.score
+            with open("highscores.txt", mode="w") as file:
+                file.write(f"{self.highscore}")
+        self.score = 0
+        self.update_scoreboard()
